@@ -1,11 +1,13 @@
 import uvicorn
 from starlette.applications import Starlette
+from starlette.middleware import Middleware
+from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import JSONResponse
 from starlette.routing import Route
 
 
 async def homepage(request):
-    return JSONResponse({"hello": "world"})
+    return JSONResponse({"message": "hello world"})
 
 
 app = Starlette(
@@ -13,6 +15,7 @@ app = Starlette(
     routes=[
         Route("/", homepage),
     ],
+    middleware=[Middleware(CORSMiddleware, allow_origins=["http://localhost:3000"])],
 )
 
 

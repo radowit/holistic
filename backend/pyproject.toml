@@ -6,11 +6,13 @@ authors = ["Radosław Ganczarek <radoslaw@ganczarek.in>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-starlette = "^0.18.0"
 uvicorn = "^0.17.5"
+starlette = "^0.18.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
+black = "^22.1.0"
+isort = "^5.10.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
