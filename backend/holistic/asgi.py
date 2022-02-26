@@ -8,6 +8,8 @@ from uvicorn import run
 
 
 async def homepage(request: Request) -> JSONResponse:
+    del request
+
     response: dict[str, str] = {"message": "hello world"}
     return JSONResponse(response)
 

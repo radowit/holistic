@@ -37,3 +37,6 @@ jobs:
     - name: Run mypy
       working-directory: ./backend
       run: poetry run mypy .
+    - name: Run pylint
+      working-directory: ./backend
+      run: poetry run pylint holistic tests
