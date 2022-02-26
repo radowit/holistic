@@ -20,3 +20,6 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 deploy-dev = "holistic.asgi:start"
+
+[tool.isort]
+profile = "black"

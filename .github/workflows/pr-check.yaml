@@ -31,3 +31,6 @@ jobs:
     - name: Run black
       working-directory: ./backend
       run: poetry run black --check .
+    - name: Run isort
+      working-directory: ./backend
+      run: poetry run isort --check-only .
