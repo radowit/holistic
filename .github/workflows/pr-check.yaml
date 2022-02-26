@@ -34,3 +34,6 @@ jobs:
     - name: Run isort
       working-directory: ./backend
       run: poetry run isort --check-only .
+    - name: Run mypy
+      working-directory: ./backend
+      run: poetry run mypy .
