@@ -40,3 +40,6 @@ jobs:
     - name: Run pylint
       working-directory: ./backend
       run: poetry run pylint holistic tests
+    - name: Run pytest
+      working-directory: ./backend
+      run: poetry run pytest
