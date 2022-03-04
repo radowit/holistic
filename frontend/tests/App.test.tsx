@@ -6,16 +6,6 @@ beforeEach(() => {
   fetch.resetMocks();
 });
 
-test("renders learn react link", () => {
-  fetch.mockResponseOnce(JSON.stringify({ message: "Hello, world!" }));
-
-  render(<App />);
-
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-  expect(fetch).toHaveBeenCalledTimes(1);
-});
-
 test("renders hello world", async () => {
   fetch.mockResponseOnce(JSON.stringify({ message: "Hello, world!" }));
 

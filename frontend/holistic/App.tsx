@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
-import "./App.css";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 type Response = {
   response: { message: "<missing>" };
@@ -23,16 +26,18 @@ class App extends Component<{}, Response> {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>holistic/App.tsx</code> and save to reload.
-          </p>
-          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-            Learn React
-          </a>
-          <p>API response: {this.state.response.message}</p>
-        </header>
+        <Navbar bg="light" expand="lg">
+          <Container>
+            <Navbar.Brand href="#home">Holistic</Navbar.Brand>
+          </Container>
+        </Navbar>
+        <Container fluid="md">
+          <Row>
+            <Col>
+              <p>API response: {this.state.response.message}</p>
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }
