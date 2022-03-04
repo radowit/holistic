@@ -93,7 +93,9 @@
     "collectCoverageFrom": [
       "holistic/**/*.{js,jsx,ts,tsx}",
       "tests/**/*.{js,jsx,ts,tsx}",
-      "!holistic/**/*.d.ts"
+      "!holistic/**/*.d.ts",
+      "!holistic/index.tsx",
+      "!holistic/reportWebVitals.ts"
     ],
     "coverageThreshold": {
       "global": {
