@@ -87,21 +87,33 @@
   },
   "jest": {
     "roots": [
-      "<rootDir>/holistic"
+      "<rootDir>/holistic",
+      "<rootDir>/tests"
     ],
     "collectCoverageFrom": [
       "holistic/**/*.{js,jsx,ts,tsx}",
-      "!holistic/**/*.d.ts"
+      "tests/**/*.{js,jsx,ts,tsx}",
+      "!holistic/**/*.d.ts",
+      "!holistic/index.tsx",
+      "!holistic/reportWebVitals.ts"
     ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": -10
+      }
+    },
     "setupFiles": [
       "react-app-polyfill/jsdom"
     ],
     "setupFilesAfterEnv": [
-      "<rootDir>/holistic/setupTests.ts"
+      "<rootDir>/tests/setupTests.ts"
     ],
     "testMatch": [
-      "<rootDir>/holistic/**/__tests__/**/*.{js,jsx,ts,tsx}",
-      "<rootDir>/holistic/**/*.{spec,test}.{js,jsx,ts,tsx}"
+      "<rootDir>/tests/**/__tests__/**/*.{js,jsx,ts,tsx}",
+      "<rootDir>/tests/**/*.{spec,test}.{js,jsx,ts,tsx}"
     ],
     "testEnvironment": "jsdom",
     "transform": {
@@ -140,5 +152,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "jest-fetch-mock": "^3.0.3"
   }
 }

@@ -1,0 +1,63 @@
+name: Run linters and tests
+
+on:
+  pull_request:
+    branches: 
+      - '**'
+  push:
+    branches:
+      - main
+      - release/*
+
+jobs:
+  backend:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.10.2]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install poetry
+      run: pip install poetry
+    - name: Install dependencies
+      working-directory: ./backend
+      run: poetry install
+    - name: Run black
+      working-directory: ./backend
+      run: poetry run black --check .
+    - name: Run isort
+      working-directory: ./backend
+      run: poetry run isort --check-only .
+    - name: Run mypy
+      working-directory: ./backend
+      run: poetry run mypy .
+    - name: Run pylint
+      working-directory: ./backend
+      run: poetry run pylint holistic tests
+    - name: Run pytest
+      working-directory: ./backend
+      run: poetry run pytest
+
+  frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 17
+    - name: Install dependencies
+      working-directory: ./frontend
+      run: yarn install
+    - name: Run eslint
+      working-directory: ./frontend
+      run: yarn eslint
+    - name: Run tests
+      working-directory: ./frontend
+      run: CI=true yarn test --coverage
